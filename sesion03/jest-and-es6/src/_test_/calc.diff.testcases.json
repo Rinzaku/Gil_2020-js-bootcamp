@@ -1,0 +1,5 @@
+[
+    {"number1":3,"number2":3,"expect":0},
+    {"number1":6,"number2":4,"expect":2},
+    {"number1":9,"number2":18,"expect":-9}
+]
