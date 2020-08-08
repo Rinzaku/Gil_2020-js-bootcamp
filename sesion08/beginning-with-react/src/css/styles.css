@@ -1,0 +1,42 @@
+*{
+    --primary: #126872;
+    --background-color: #18C29C;
+}
+
+body{
+    background-color: var(--background-color);
+    color: whitesmoke;
+    font-family: 'Recursive', sans-serif;
+}
+
+nav{
+    max-width: 21rem;
+    background-color: seashell;
+    font-size: large;
+    margin: 3rem;
+}
+nav ul{
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+nav ul li{
+    padding: 0.6rem 0.9rem;
+}
+nav ul li a{
+    display: inline-block;
+    min-width: 15rem;
+    background-color: snow;
+    color: teal;
+    border: .2rem solid rgb(9, 89, 164);
+    border-radius: .3rem;
+    padding: .3rem .6rem;
+    text-decoration: none;
+    margin-left: .6rem;
+}
+nav ul li a:hover{
+    background-color: var(--primary);
+    color: white;
+}
