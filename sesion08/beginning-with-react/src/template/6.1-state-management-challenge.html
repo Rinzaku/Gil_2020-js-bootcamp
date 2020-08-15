@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.1/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.1/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Recursive&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="../css/styles.css">
+    <title>Event Listener</title>
+</head>
+<body>
+    <a onclick="window.history.back()">Go back</a>
+    <div id="root"></div>
+    
+    <script type="text/babel">
+
+    class ClassEventListener extends React.Component {
+        state = {
+            contador : 0
+        }
+        handleClickPlus(args){
+            this.setState({//Siempre se debe llamar para repintar la vista en ReactJS
+                contador: args + 1
+            })
+        }
+
+        handleClickMinus(args){
+            this.setState({//Siempre se debe llamar para repintar la vista en ReactJS
+                contador: args - 1
+            })
+        }
+
+        handleClickPlus2(args){
+            this.setState({//Siempre se debe llamar para repintar la vista en ReactJS
+                contador: args + 2
+            })
+        }
+
+        handleClickMinus2(args){
+            this.setState({//Siempre se debe llamar para repintar la vista en ReactJS
+                contador: args - 2
+            })
+        }
+        
+        render() {
+            return(
+                <div>
+                    <h2>Event Listener (HANDLER)</h2>
+                    <div>
+                        <span>Contador : {this.state.contador}</span>
+                    </div>
+                    <div>
+                        <button onClick={(e) => this.handleClickPlus(this.state.contador,e)}>Incrementa</button>
+                        <button onClick={(e) => this.handleClickMinus(this.state.contador,e)}>Decrementa</button>
+                    </div>
+                    <div>
+                        <button onClick={(e) => this.handleClickPlus2(this.state.contador,e)}>Incrementa * 2</button>
+                        <button onClick={(e) => this.handleClickMinus2(this.state.contador,e)}>Decrementa * 2</button>
+                    </div>
+                </div>
+            )
+        }
+    }
+
+        ReactDOM.render(
+            <ClassEventListener/>,
+            document.querySelector('#root')
+        )
+    </script>
+</body>
+</html>

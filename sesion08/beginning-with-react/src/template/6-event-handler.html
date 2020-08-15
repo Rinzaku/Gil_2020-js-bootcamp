@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.1/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.1/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Recursive&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="../css/styles.css">
+    <title>Event Listener</title>
+</head>
+<body>
+    <a onclick="window.history.back()">Go back</a>
+    <div id="root"></div>
+    
+    <script type="text/babel">
+
+    class ClassEventListener extends React.Component {
+        handleClick1(){
+            const msg = "Handled Click 1"
+            console.log(`Event listener from : ${msg}`)
+        }
+
+        handleClick2(){
+            const msg = "Handled Click 2"
+            console.log(`Event listener from : ${msg}`)
+        }
+
+        handleClick3(args){
+            console.log(`Event listener from : ${args}`)
+        }
+
+        handleClick4(args){
+            const {name, age, country} = args//<- DESESTRUCTURACIÓN
+            console.log(`User name : ${name}\nUser age: ${age}\nUser country: ${country}`)
+        }
+        
+        render() {
+            return(
+                <div>
+                    <h2>Event Listener (HANDLER)</h2>
+                    <div>
+                        <button onClick={this.handleClick1}>[1] Click me!</button>
+                        <button onClick={(e) => this.handleClick2(e)}>[2] Click me!</button>
+                        <button onClick={(e) => this.handleClick3('Handled Click 3',e)}>[3] Click me!</button>
+                    </div>
+                    <div>
+                        <button onClick={(e) => this.handleClick4({name: 'Gilberto', age: 31, country: 'México'},e)}>[4] Click me!</button>
+                        <button onClick={(e) => this.handleClick4({name: 'Annie', age: 2, country: 'México'},e)}>[5] Click me!</button>
+                    </div>
+                </div>
+            )
+        }
+    }
+
+        ReactDOM.render(
+            <ClassEventListener/>,
+            document.querySelector('#root')
+        )
+    </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.1/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.1/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Recursive&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="../css/styles.css">
+    <title>Event Listener</title>
+</head>
+<body>
+    <a onclick="window.history.back()">Go back</a>
+    <div id="root"></div>
+    
+    <script type="text/babel">
+
+        const LoadingComponent = () => {
+            return <h3>Loading...</h3>
+        }
+
+        const TableComponent = () => {
+            return(
+                <table>
+                    <thead>
+                        <th>header 1</th>
+                        <th>header 2</th>
+                        <th>header 3</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>dato 1</td>
+                            <td>dato 1</td>
+                            <td>dato 1</td>
+                        </tr>
+                        <tr>
+                            <td>dato 2</td>
+                            <td>dato 2</td>
+                            <td>dato 2</td>
+                        </tr>
+                        <tr>
+                            <td>dato 3</td>
+                            <td>dato 3</td>
+                            <td>dato 3</td>
+                        </tr>
+                    </tbody>
+                </table>
+            )
+        }
+
+        const LoginLogoutButton = (props) => {
+            //props toma los eventos de nuesto custom buttom 'LoginLogout'
+            const {xxx, handleLabelButton} = props //<- la deconstrucción puede tomar cualquier nombre
+            return <button onClick={xxx}>{handleLabelButton}</button>
+        }
+
+        class HandleState extends React.Component {
+            state = {
+                isLoading: false,
+                isLoggedIn: false
+            }
+
+            handleClickLoading(args){
+                this.setState({//Siempre se debe llamar para repintar la vista en ReactJS
+                    isLoading: !this.state.isLoading
+                })
+            }
+
+            handleLogin(){
+                console.log('****** handleComponentLogin *******')
+                this.setState({
+                    isLoggedIn: !this.state.isLoggedIn
+                })
+            }
+
+            render() {
+
+                let result = (this.state.isLoading)? <LoadingComponent/> : <TableComponent/>
+                return (
+                    <div>
+                        <section>
+                            <button onClick={(e) => this.handleClickLoading(e)}>Change state</button>
+                            <p>{result}</p>
+                        </section>
+                        <section>
+                            <LoginLogoutButton 
+                                handleLogin={(e) => this.handleLogin(e)} 
+                                handleLabelButton= {this.state.isLoggedIn ? "LogOut" : "LogIn"}/>
+                        </section>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(
+            <HandleState/>,
+            document.querySelector('#root')
+        )
+    </script>
+</body>
+</html>
