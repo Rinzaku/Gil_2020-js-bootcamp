@@ -3,10 +3,16 @@
     --background-color: #18C29C;
 }
 
-body{
-    background-color: var(--background-color);
-    color: whitesmoke;
-    font-family: 'Recursive', sans-serif;
+// body{
+//     background-color: var(--background-color);
+//     color: whitesmoke;
+//     font-family: 'Recursive', sans-serif;
+// }
+
+.container{
+    display: flex;
+    justify-content: center;
+
 }
 
 nav{
@@ -17,7 +23,7 @@ nav{
 }
 nav ul{
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: row wrap;
     align-content: space-around;
     max-height: 30rem;
     list-style-type: none;

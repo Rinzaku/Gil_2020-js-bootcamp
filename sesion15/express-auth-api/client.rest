@@ -1,0 +1,48 @@
+GET http://127.0.0.1:3000/ HTTP/1.1
+
+###
+POST http://127.0.0.1:3000/register HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Gil",
+  "email": "gilberto.aviles@gmail.com",
+  "password": "1q2w3e4r5t6y"
+}
+
+###
+POST http://127.0.0.1:3000/register HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Lau",
+  "email": "laura.gonzalez@gmail.com",
+  "password": "1q2w3e4r5t6y"
+}
+
+###
+POST http://127.0.0.1:3000/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "gilberto.aviles@gmail.com",
+  "password": "1q2w3e4r5t6y"
+}
+
+###
+POST http://127.0.0.1:3000/verify-jwt HTTP/1.1
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlciI6ImdpbGJlcnRvLmF2aWxlc0BnbWFpbC5jb20iLCJpYXQiOjE2MDExNTM1MTcsImV4cCI6MTYwMTE1NzExN30.-ZChduCBW5w56M3MhcxuNqgD6hgg6RVH8NvaOcABGp8
+
+{
+  "email": "gilberto.aviles@gmail.com",
+  "password": "1q2w3e4r5t6y"
+}
+
+###
+POST http://127.0.0.1:3000/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "gilberto.@gmail.com"
+}
